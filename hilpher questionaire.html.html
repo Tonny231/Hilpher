@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Research Questionnaire – Hilpher Ndemo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Inter:wght@400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1a2e52;
+    --blue: #2563a8;
+    --blue-light: #dbeafe;
+    --gold: #c8972a;
+    --gold-light: #fef3c7;
+    --bg: #f7f8fc;
+    --white: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #cbd5e1;
+    --error: #991b1b;
+    --radius: 10px;
+    --shadow: 0 2px 12px rgba(26,46,82,0.10);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0 0 60px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #2563a8 100%);
+    color: white;
+    padding: 40px 24px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .hero-inst { font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; opacity: 0.7; margin-bottom: 10px; }
+  .hero h1 { font-family: 'Merriweather', serif; font-size: clamp(17px,3.5vw,24px); font-weight: 700; line-height: 1.35; max-width: 680px; margin: 0 auto 12px; }
+  .hero-meta { font-size: 13px; opacity: 0.8; }
+  .hero-meta span { background: rgba(255,255,255,0.15); border-radius: 20px; padding: 3px 12px; margin: 2px; display: inline-block; }
+
+  .cover { max-width: 720px; margin: 28px auto 0; padding: 0 16px; }
+  .cover-card {
+    background: var(--white);
+    border-left: 4px solid var(--gold);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+    font-size: 14px; line-height: 1.7;
+  }
+  .cover-card strong { color: var(--navy); }
+
+  .progress-wrap { max-width: 720px; margin: 24px auto 0; padding: 0 16px; }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+  .progress-bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; background: linear-gradient(90deg, var(--blue), var(--gold)); border-radius: 99px; transition: width 0.4s ease; width: 0%; }
+
+  .form-wrap { max-width: 720px; margin: 20px auto 0; padding: 0 16px; }
+
+  .section { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); margin-bottom: 24px; overflow: hidden; display: none; }
+  .section.active { display: block; }
+  .section-header { background: var(--navy); color: white; padding: 16px 24px; display: flex; align-items: center; gap: 12px; }
+  .section-num { background: var(--gold); color: white; font-weight: 700; font-size: 13px; border-radius: 50%; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .section-header h2 { font-size: 15px; font-weight: 600; }
+  .section-body { padding: 24px; }
+
+  .q { margin-bottom: 24px; }
+  .q:last-child { margin-bottom: 0; }
+  .q-label { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 10px; line-height: 1.5; }
+  .q-label .req { color: var(--gold); margin-left: 3px; }
+  .q-hint { font-size: 12px; color: var(--muted); margin-bottom: 10px; font-style: italic; }
+
+  .options { display: flex; flex-direction: column; gap: 8px; }
+  .opt { display: flex; align-items: flex-start; gap: 10px; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; cursor: pointer; transition: border-color 0.15s, background 0.15s; }
+  .opt:hover { border-color: var(--blue); background: var(--blue-light); }
+  .opt input { margin-top: 2px; accent-color: var(--blue); flex-shrink: 0; }
+  .opt span { font-size: 14px; line-height: 1.4; }
+  .opt.checked { border-color: var(--blue); background: var(--blue-light); }
+
+  .text-input { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); transition: border-color 0.15s; background: var(--white); }
+  .text-input:focus { outline: none; border-color: var(--blue); }
+
+  .likert-wrap { overflow-x: auto; }
+  .likert-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .likert-table th { background: var(--navy); color: white; font-weight: 600; padding: 10px 8px; text-align: center; font-size: 12px; }
+  .likert-table th:first-child { text-align: left; padding-left: 14px; }
+  .likert-table td { padding: 10px 8px; text-align: center; border-bottom: 1px solid #f1f5f9; vertical-align: middle; }
+  .likert-table td:first-child { text-align: left; padding-left: 14px; font-size: 13px; line-height: 1.4; }
+  .likert-table tr:nth-child(even) td { background: #f8fafc; }
+  .likert-table tr:hover td { background: var(--blue-light); }
+  .likert-table input[type=radio] { accent-color: var(--blue); transform: scale(1.2); }
+
+  .scale-legend { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+  .scale-pill { background: var(--navy); color: white; font-size: 11px; border-radius: 20px; padding: 3px 10px; font-weight: 500; }
+
+  .nav { display: flex; justify-content: space-between; align-items: center; margin-top: 28px; }
+  .btn { padding: 11px 28px; border-radius: 8px; border: none; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-primary:hover { background: var(--blue); }
+  .btn-secondary { background: var(--white); color: var(--navy); border: 1.5px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--navy); }
+  .btn-submit { background: linear-gradient(135deg, var(--gold), #e6a830); color: white; }
+  .btn-submit:hover { filter: brightness(1.05); }
+
+  .tabs { display: flex; gap: 6px; flex-wrap: wrap; max-width: 720px; margin: 16px auto 0; padding: 0 16px; }
+  .tab { font-size: 12px; font-weight: 500; padding: 5px 12px; border-radius: 20px; border: 1.5px solid var(--border); background: var(--white); color: var(--muted); cursor: pointer; transition: all 0.15s; }
+  .tab.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .tab.done { background: var(--gold-light); color: var(--gold); border-color: var(--gold); }
+
+  .success-screen { display: none; text-align: center; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 48px 32px; max-width: 720px; margin: 28px auto 0; }
+  .success-screen.show { display: block; }
+  .success-icon { font-size: 52px; margin-bottom: 16px; }
+  .success-screen h2 { font-family: 'Merriweather', serif; color: var(--navy); font-size: 22px; margin-bottom: 12px; }
+  .success-screen p { color: var(--muted); font-size: 14px; line-height: 1.7; max-width: 480px; margin: 0 auto; }
+
+  .field-error { font-size: 12px; color: var(--error); margin-top: 6px; display: none; }
+  .q.invalid .field-error { display: block; }
+  .q.invalid .opt, .q.invalid .text-input { border-color: var(--error); }
+
+  @media (max-width: 500px) {
+    .section-body { padding: 16px; }
+    .likert-table th, .likert-table td { padding: 8px 4px; font-size: 11px; }
+    .hero h1 { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-inst">The Catholic University of Eastern Africa</div>
+  <h1>The Influence of Social Media Usage on Depression Levels Among Youths in Rongai, Kajiado County</h1>
+  <div class="hero-meta">
+    <span>Researcher: Hilpher Ndemo</span>
+    <span>Reg. No. 1050543</span>
+    <span>BA Counseling Psychology</span>
+    <span>April 2026</span>
+  </div>
+</div>
+
+<div class="cover">
+  <div class="cover-card">
+    <strong>Dear Respondent,</strong><br><br>
+    My name is <strong>Hilpher Ndemo</strong>, a Bachelor of Arts in Counseling Psychology student at the Catholic University of Eastern Africa. I am conducting a study on <em>the influence of social media usage on depression levels among youths in Rongai, Kajiado County</em>, in partial fulfillment of the requirements for the award of a BA degree.<br><br>
+    Your participation is <strong>entirely voluntary and anonymous</strong>. All responses will be treated with strict confidentiality and used solely for academic purposes. The questionnaire takes approximately <strong>10–15 minutes</strong> to complete. Thank you sincerely for your time.
+  </div>
+</div>
+
+<div class="tabs" id="tabs">
+  <div class="tab active" data-section="0">A: Demographics</div>
+  <div class="tab" data-section="1">B: Social Media</div>
+  <div class="tab" data-section="2">C: Emotional Impact</div>
+  <div class="tab" data-section="3">D: PHQ-9 Screening</div>
+  <div class="tab" data-section="4">E: Perceptions</div>
+</div>
+
+<div class="progress-wrap">
+  <div class="progress-label"><span id="prog-label">Section 1 of 5</span><span id="prog-pct">0%</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progress"></div></div>
+</div>
+
+<div class="form-wrap">
+
+<!-- SECTION A -->
+<div class="section active" id="sec-0">
+  <div class="section-header"><div class="section-num">A</div><h2>Demographic Information</h2></div>
+  <div class="section-body">
+    <div class="q" data-required="radio">
+      <div class="q-label">1. Age group <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="age" value="18-25"/> <span>18 – 25 years</span></label>
+        <label class="opt"><input type="radio" name="age" value="26-30"/> <span>26 – 30 years</span></label>
+        <label class="opt"><input type="radio" name="age" value="31-35"/> <span>31 – 35 years</span></label>
+        <label class="opt"><input type="radio" name="age" value="36-40"/> <span>36 – 40 years</span></label>
+      </div>
+      <div class="field-error">Please select your age group.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">2. Gender <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="gender" value="Male"/> <span>Male</span></label>
+        <label class="opt"><input type="radio" name="gender" value="Female"/> <span>Female</span></label>
+        <label class="opt"><input type="radio" name="gender" value="Other"/> <span>Other / Prefer not to say</span></label>
+      </div>
+      <div class="field-error">Please select your gender.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">3. Highest level of education completed <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="edu" value="Primary"/> <span>Primary</span></label>
+        <label class="opt"><input type="radio" name="edu" value="Secondary"/> <span>Secondary</span></label>
+        <label class="opt"><input type="radio" name="edu" value="Certificate/Diploma"/> <span>Certificate / Diploma</span></label>
+        <label class="opt"><input type="radio" name="edu" value="Degree"/> <span>Undergraduate Degree</span></label>
+        <label class="opt"><input type="radio" name="edu" value="Postgraduate"/> <span>Postgraduate</span></label>
+      </div>
+      <div class="field-error">Please select your education level.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">4. Current occupation <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="occ" value="Student"/> <span>Student</span></label>
+        <label class="opt"><input type="radio" name="occ" value="Employed"/> <span>Formally employed</span></label>
+        <label class="opt"><input type="radio" name="occ" value="Self-employed"/> <span>Self-employed / Informally employed</span></label>
+        <label class="opt"><input type="radio" name="occ" value="Unemployed"/> <span>Unemployed</span></label>
+      </div>
+      <div class="field-error">Please select your occupation.</div>
+    </div>
+    <div class="q">
+      <div class="q-label">5. Residential area within Rongai</div>
+      <input class="text-input" type="text" name="area" placeholder="e.g. Mwisho, Tumaini, Relax, etc."/>
+    </div>
+    <div class="nav"><span></span><button class="btn btn-primary" onclick="nextSection()">Next →</button></div>
+  </div>
+</div>
+
+<!-- SECTION B -->
+<div class="section" id="sec-1">
+  <div class="section-header"><div class="section-num">B</div><h2>Social Media Usage</h2></div>
+  <div class="section-body">
+    <div class="q" data-required="radio">
+      <div class="q-label">6. Do you currently use social media? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="uses_sm" value="Yes"/> <span>Yes</span></label>
+        <label class="opt"><input type="radio" name="uses_sm" value="No"/> <span>No — please proceed directly to Section D</span></label>
+      </div>
+      <div class="field-error">Please answer this question.</div>
+    </div>
+    <div class="q" data-required="checkbox">
+      <div class="q-label">7. Which social media platforms do you use? <span class="req">*</span></div>
+      <div class="q-hint">Tick all that apply</div>
+      <div class="options">
+        <label class="opt"><input type="checkbox" name="platforms" value="WhatsApp"/> <span>WhatsApp</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="Facebook"/> <span>Facebook</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="Instagram"/> <span>Instagram</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="TikTok"/> <span>TikTok</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="Twitter/X"/> <span>Twitter / X</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="YouTube"/> <span>YouTube</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="Snapchat"/> <span>Snapchat</span></label>
+        <label class="opt"><input type="checkbox" name="platforms" value="Other"/> <span>Other</span></label>
+      </div>
+      <div class="field-error">Please select at least one platform.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">8. How many hours per day do you spend on social media on average? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="hours" value="<1"/> <span>Less than 1 hour</span></label>
+        <label class="opt"><input type="radio" name="hours" value="1-2"/> <span>1 – 2 hours</span></label>
+        <label class="opt"><input type="radio" name="hours" value="3-4"/> <span>3 – 4 hours</span></label>
+        <label class="opt"><input type="radio" name="hours" value="5-6"/> <span>5 – 6 hours</span></label>
+        <label class="opt"><input type="radio" name="hours" value=">6"/> <span>More than 6 hours</span></label>
+      </div>
+      <div class="field-error">Please select a time range.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">9. How frequently do you access social media? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="freq" value="Several times daily"/> <span>Several times a day</span></label>
+        <label class="opt"><input type="radio" name="freq" value="Once daily"/> <span>Once a day</span></label>
+        <label class="opt"><input type="radio" name="freq" value="Few times/week"/> <span>A few times per week</span></label>
+        <label class="opt"><input type="radio" name="freq" value="Rarely"/> <span>Rarely</span></label>
+      </div>
+      <div class="field-error">Please select frequency.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">10. How would you describe your typical social media engagement? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="engage" value="Passive"/> <span>Mostly passive — I scroll and view without actively posting or commenting</span></label>
+        <label class="opt"><input type="radio" name="engage" value="Active"/> <span>Mostly active — I regularly post, comment, or interact with others</span></label>
+        <label class="opt"><input type="radio" name="engage" value="Both"/> <span>Both passive and active, roughly equally</span></label>
+      </div>
+      <div class="field-error">Please select your engagement style.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">11. Primary reason for using social media <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="reason" value="Entertainment"/> <span>Entertainment and leisure</span></label>
+        <label class="opt"><input type="radio" name="reason" value="Communication"/> <span>Communication with family and friends</span></label>
+        <label class="opt"><input type="radio" name="reason" value="News/Info"/> <span>News and information</span></label>
+        <label class="opt"><input type="radio" name="reason" value="Business"/> <span>Business or work-related purposes</span></label>
+        <label class="opt"><input type="radio" name="reason" value="Other"/> <span>Other</span></label>
+      </div>
+      <div class="field-error">Please select a reason.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">12. For how many years have you been using social media? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="years" value="<1"/> <span>Less than 1 year</span></label>
+        <label class="opt"><input type="radio" name="years" value="1-3"/> <span>1 – 3 years</span></label>
+        <label class="opt"><input type="radio" name="years" value="4-6"/> <span>4 – 6 years</span></label>
+        <label class="opt"><input type="radio" name="years" value=">6"/> <span>More than 6 years</span></label>
+      </div>
+      <div class="field-error">Please select a duration.</div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+      <button class="btn btn-primary" onclick="nextSection()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION C -->
+<div class="section" id="sec-2">
+  <div class="section-header"><div class="section-num">C</div><h2>Social Media &amp; Emotional Experience</h2></div>
+  <div class="section-body">
+    <div class="scale-legend">
+      <div class="scale-pill">1 — Strongly Disagree</div>
+      <div class="scale-pill">2 — Disagree</div>
+      <div class="scale-pill">3 — Undecided</div>
+      <div class="scale-pill">4 — Agree</div>
+      <div class="scale-pill">5 — Strongly Agree</div>
+    </div>
+    <div class="q" data-required="likert-c">
+      <div class="likert-wrap">
+        <table class="likert-table">
+          <thead>
+            <tr>
+              <th style="width:52%">Statement</th>
+              <th>1<br>SD</th><th>2<br>D</th><th>3<br>U</th><th>4<br>A</th><th>5<br>SA</th>
+            </tr>
+          </thead>
+          <tbody id="likert-c-body"></tbody>
+        </table>
+      </div>
+      <div class="field-error">Please respond to all statements.</div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+      <button class="btn btn-primary" onclick="nextSection()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION D -->
+<div class="section" id="sec-3">
+  <div class="section-header"><div class="section-num">D</div><h2>Depression Screening (PHQ-9)</h2></div>
+  <div class="section-body">
+    <p style="font-size:14px;color:var(--muted);margin-bottom:16px;line-height:1.6;">Over the <strong>last two weeks</strong>, how often have you been bothered by any of the following problems?</p>
+    <div class="scale-legend">
+      <div class="scale-pill">0 — Not at all</div>
+      <div class="scale-pill">1 — Several days</div>
+      <div class="scale-pill">2 — More than half the days</div>
+      <div class="scale-pill">3 — Nearly every day</div>
+    </div>
+    <div class="q" data-required="likert-d">
+      <div class="likert-wrap">
+        <table class="likert-table">
+          <thead>
+            <tr>
+              <th style="width:52%">Symptom</th>
+              <th>0</th><th>1</th><th>2</th><th>3</th>
+            </tr>
+          </thead>
+          <tbody id="likert-d-body"></tbody>
+        </table>
+      </div>
+      <div class="field-error">Please respond to all items.</div>
+    </div>
+    <div class="q" data-required="radio" style="margin-top:24px;">
+      <div class="q-label">If you ticked any problems above, how difficult have these made it to do your work, manage your home, or get along with others? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="difficulty" value="Not difficult"/> <span>Not difficult at all</span></label>
+        <label class="opt"><input type="radio" name="difficulty" value="Somewhat difficult"/> <span>Somewhat difficult</span></label>
+        <label class="opt"><input type="radio" name="difficulty" value="Very difficult"/> <span>Very difficult</span></label>
+        <label class="opt"><input type="radio" name="difficulty" value="Extremely difficult"/> <span>Extremely difficult</span></label>
+      </div>
+      <div class="field-error">Please select an option.</div>
+    </div>
+    <div class="nav">
+      <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+      <button class="btn btn-primary" onclick="nextSection()">Next →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION E -->
+<div class="section" id="sec-4">
+  <div class="section-header"><div class="section-num">E</div><h2>General Perceptions</h2></div>
+  <div class="section-body">
+    <div class="q" data-required="radio">
+      <div class="q-label">33. Overall, do you think social media use has affected your mental health? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="effect" value="Positively"/> <span>Yes, positively</span></label>
+        <label class="opt"><input type="radio" name="effect" value="Negatively"/> <span>Yes, negatively</span></label>
+        <label class="opt"><input type="radio" name="effect" value="Both"/> <span>Both positively and negatively</span></label>
+        <label class="opt"><input type="radio" name="effect" value="No effect"/> <span>No effect</span></label>
+        <label class="opt"><input type="radio" name="effect" value="Not sure"/> <span>Not sure</span></label>
+      </div>
+      <div class="field-error">Please select an option.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">34. Have you ever considered reducing your social media use because of how it made you feel emotionally? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="reduce" value="Yes"/> <span>Yes</span></label>
+        <label class="opt"><input type="radio" name="reduce" value="No"/> <span>No</span></label>
+        <label class="opt"><input type="radio" name="reduce" value="Already reduced"/> <span>I have already reduced my usage for this reason</span></label>
+      </div>
+      <div class="field-error">Please select an option.</div>
+    </div>
+    <div class="q" data-required="radio">
+      <div class="q-label">35. Have you ever sought or considered seeking professional help for emotional difficulties related to social media use? <span class="req">*</span></div>
+      <div class="options">
+        <label class="opt"><input type="radio" name="help" value="Sought help"/> <span>Yes, I have sought help</span></label>
+        <label class="opt"><input type="radio" name="help" value="Considered not sought"/> <span>I considered it but did not seek help</span></label>
+        <label class="opt"><input type="radio" name="help" value="No"/> <span>No</span></label>
+      </div>
+      <div class="field-error">Please select an option.</div>
+    </div>
+    <div class="q">
+      <div class="q-label">36. Is there anything else you would like to share about how social media has affected your emotional well-being? <span style="font-weight:400;color:var(--muted)">(Optional)</span></div>
+      <textarea class="text-input" name="comments" rows="4" placeholder="Your thoughts here…" style="resize:vertical;"></textarea>
+    </div>
+    <div class="nav">
+      <button class="btn btn-secondary" onclick="prevSection()">← Back</button>
+      <button class="btn btn-submit" onclick="submitForm()">Submit Questionnaire ✓</button>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- SUCCESS -->
+<div class="success-screen" id="success">
+  <div class="success-icon">✅</div>
+  <h2>Thank you for your participation!</h2>
+  <p>Your responses have been recorded successfully. Your contribution will help advance understanding of social media's influence on youth mental health in Rongai, Kajiado County.<br><br>
+  <strong>Researcher:</strong> Hilpher Ndemo, BA Counseling Psychology, CUEA<br>
+  <strong>Supervisor:</strong> Dr. Henrietta, CUEA</p>
+</div>
+
+<script>
+const cItems = [
+  "Viewing others' seemingly perfect lifestyles on social media makes me feel inadequate.",
+  "Cyberbullying or negative comments directed at me online have negatively affected my mood.",
+  "I feel my self-worth depends on the number of likes or positive reactions I receive on social media.",
+  "Spending long hours on social media at night disrupts my sleep and worsens my mood the following day.",
+  "Passively scrolling through social media without interacting leaves me feeling lonely or emotionally empty.",
+  "Exposure to negative news and distressing content online worsens my emotional state.",
+  "The pressure to maintain an attractive or impressive online profile causes me stress or anxiety.",
+  "Fear of missing out (FOMO) on social events shared online makes me feel left out or inferior.",
+  "Social media helps me feel connected to others and reduces feelings of loneliness.",
+  "I am able to limit my social media use when I feel it is negatively affecting my mood.",
+];
+const dItems = [
+  "Little interest or pleasure in doing things.",
+  "Feeling down, depressed, or hopeless.",
+  "Trouble falling or staying asleep, or sleeping too much.",
+  "Feeling tired or having little energy.",
+  "Poor appetite or overeating.",
+  "Feeling bad about yourself — or that you are a failure or have let yourself or your family down.",
+  "Trouble concentrating on things, such as reading, studying, or watching television.",
+  "Moving or speaking so slowly that other people could have noticed; or being so fidgety or restless that you have been moving more than usual.",
+  "Thoughts that you would be better off dead, or thoughts of hurting yourself in some way.",
+];
+
+function buildLikert(items, cols, groupName, tbodyId) {
+  const tbody = document.getElementById(tbodyId);
+  items.forEach((item, i) => {
+    const tr = document.createElement('tr');
+    let cells = `<td>${i+1}. ${item}</td>`;
+    cols.forEach(c => { cells += `<td><input type="radio" name="${groupName}_${i}" value="${c}"/></td>`; });
+    tr.innerHTML = cells;
+    tbody.appendChild(tr);
+  });
+}
+buildLikert(cItems, [1,2,3,4,5], 'c', 'likert-c-body');
+buildLikert(dItems, [0,1,2,3], 'd', 'likert-d-body');
+
+document.querySelectorAll('.opt input').forEach(input => {
+  input.addEventListener('change', () => {
+    if (input.type === 'radio') {
+      document.querySelectorAll(`input[name="${input.name}"]`).forEach(r => r.closest('.opt').classList.remove('checked'));
+    }
+    input.closest('.opt').classList.toggle('checked', input.checked);
+    input.closest('.q').classList.remove('invalid');
+  });
+});
+
+let currentSection = 0;
+const totalSections = 5;
+
+function updateProgress() {
+  const pct = Math.round((currentSection / totalSections) * 100);
+  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-label').textContent = `Section ${currentSection + 1} of ${totalSections}`;
+  document.querySelectorAll('.tab').forEach((t, i) => {
+    t.classList.remove('active', 'done');
+    if (i === currentSection) t.classList.add('active');
+    else if (i < currentSection) t.classList.add('done');
+  });
+}
+
+function validateSection(idx) {
+  const sec = document.getElementById('sec-' + idx);
+  let valid = true;
+  sec.querySelectorAll('.q[data-required]').forEach(q => {
+    const req = q.getAttribute('data-required');
+    q.classList.remove('invalid');
+    if (req === 'radio') {
+      const name = q.querySelector('input[type=radio]').name;
+      if (!document.querySelector(`input[name="${name}"]:checked`)) { q.classList.add('invalid'); valid = false; }
+    } else if (req === 'checkbox') {
+      if (!q.querySelector('input[type=checkbox]:checked')) { q.classList.add('invalid'); valid = false; }
+    } else if (req === 'likert-c') {
+      for (let i = 0; i < cItems.length; i++) {
+        if (!document.querySelector(`input[name="c_${i}"]:checked`)) { q.classList.add('invalid'); valid = false; break; }
+      }
+    } else if (req === 'likert-d') {
+      for (let i = 0; i < dItems.length; i++) {
+        if (!document.querySelector(`input[name="d_${i}"]:checked`)) { q.classList.add('invalid'); valid = false; break; }
+      }
+    }
+  });
+  return valid;
+}
+
+function nextSection() {
+  if (!validateSection(currentSection)) {
+    document.querySelector(`#sec-${currentSection} .q.invalid`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  document.getElementById('sec-' + currentSection).classList.remove('active');
+  currentSection++;
+  document.getElementById('sec-' + currentSection).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function prevSection() {
+  document.getElementById('sec-' + currentSection).classList.remove('active');
+  currentSection--;
+  document.getElementById('sec-' + currentSection).classList.add('active');
+  updateProgress();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    const target = parseInt(tab.getAttribute('data-section'));
+    if (target <= currentSection) {
+      document.getElementById('sec-' + currentSection).classList.remove('active');
+      currentSection = target;
+      document.getElementById('sec-' + currentSection).classList.add('active');
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
+});
+
+function submitForm() {
+  if (!validateSection(currentSection)) {
+    document.querySelector(`#sec-${currentSection} .q.invalid`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  document.getElementById('sec-' + currentSection).classList.remove('active');
+  document.getElementById('success').classList.add('show');
+  document.getElementById('tabs').style.display = 'none';
+  document.querySelector('.progress-wrap').style.display = 'none';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+updateProgress();
+</script>
+</body>
+</html>
